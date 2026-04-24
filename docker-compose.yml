@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  antar-sync:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - PORT=3000
