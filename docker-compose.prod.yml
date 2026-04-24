@@ -5,6 +5,8 @@ services:
     networks:
       - cloudcart-net
     restart: unless-stopped
+    environment:
+      - PORT=80
 
 networks:
   cloudcart-net:
