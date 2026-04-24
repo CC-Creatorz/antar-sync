@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: antar
+    networks:
+      - cloudcart-net
+    restart: unless-stopped
+
+networks:
+  cloudcart-net:
+    external: true

@@ -1,0 +1,20 @@
+name: Deploy to antar.cloudcart.biz
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger monorepo deploy workflow
+        env:
+          GH_TOKEN: ${{ secrets.CC_DEPLOY_PAT }}
+        run: |
+          gh workflow run deploy.yml \
+            --repo CC-Creatorz/cloudcart-projects \
+            --field project=antar \
+            --field subdomain=antar
+          echo "Triggered deploy: https://github.com/CC-Creatorz/cloudcart-projects/actions/workflows/deploy.yml" >> "$GITHUB_STEP_SUMMARY"
